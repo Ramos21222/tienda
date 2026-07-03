@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maxi dress — DRITTEI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --navy:#141B34;--navy-soft:#1E2846;--cream:#F7F3E9;--cream-dim:#EDE7D8;
+    --copper:#B08D57;--line:rgba(20,27,52,.14);--line-cream:rgba(247,243,233,.18);
+    --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;--script:'Dancing Script',cursive;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--navy);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+  /* smooth page transitions: fade in on load, fade out just before following a link (see transitions.js) */
+  body{animation:pageFadeIn .45s ease}
+  @keyframes pageFadeIn{from{opacity:0}to{opacity:1}}
+  body.page-leaving{transition:opacity .32s ease;opacity:0}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+  .eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.42em;text-transform:uppercase;font-weight:400}
+
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,box-shadow .4s;padding:22px 0}
+  header.scrolled{background:rgba(247,243,233,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between}
+  .nav-links{display:flex;gap:38px;list-style:none}
+  .nav-links a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;position:relative;padding:4px 0;color:var(--navy)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--navy);transition:width .35s}
+  .nav-links a:hover::after{width:100%}
+  .brand-mark{font-family:var(--script);font-size:30px;letter-spacing:.02em;line-height:1;color:var(--navy)}
+  .nav-right{display:flex;gap:26px;align-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+  .nav-right .bag{border:1px solid var(--navy);border-radius:40px;padding:7px 16px;transition:background .3s,color .3s}
+  .nav-right .bag:hover{background:var(--navy);color:var(--cream)}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;width:44px;height:44px;align-items:center;justify-content:center}
+  .burger span{width:24px;height:1.5px;background:var(--navy);display:block}
+
+  /* MOBILE MENU: nav-actions groups the cart pill + burger so they stay together once nav-links hide (see Phase 4 header rebalance too) */
+  .nav-actions{display:contents}
+  .nav-overlay{position:fixed;inset:0;background:rgba(20,27,52,.55);opacity:0;pointer-events:none;transition:opacity .35s;z-index:150}
+  .nav-overlay.open{opacity:1;pointer-events:auto}
+  .mobile-menu{position:fixed;top:0;right:0;bottom:0;width:82vw;max-width:360px;background:var(--cream);z-index:151;padding:100px 32px 40px;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.7,.2,1);overflow-y:auto;display:flex;flex-direction:column}
+  .mobile-menu.open{transform:translateX(0)}
+  .mobile-menu-close{position:absolute;top:22px;right:22px;width:44px;height:44px;background:none;border:none;font-size:28px;line-height:1;color:var(--navy);cursor:pointer}
+  .mobile-menu-links{list-style:none}
+  .mobile-menu-links li{border-bottom:1px solid var(--line)}
+  .mobile-menu-links a{display:block;padding:18px 0;font-family:var(--serif);font-size:22px;color:var(--navy)}
+  .mobile-menu-bag{margin-top:28px;text-align:center;border:1px solid var(--navy);border-radius:40px;padding:14px 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;min-height:44px;display:flex;align-items:center;justify-content:center}
+  body.menu-open{overflow:hidden}
+
+  /* HERO */
+  .hero{min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:1.05fr 1fr;padding-top:96px;position:relative}
+  .hero-left{padding:60px 40px;display:flex;flex-direction:column;justify-content:center;position:relative}
+  .hero-left::after{content:"";position:absolute;right:0;top:14%;bottom:14%;width:1px;background:var(--line)}
+  .hero-logo{font-family:var(--script);font-size:clamp(64px,9vw,132px);line-height:.9;color:var(--navy);margin-bottom:26px}
+  .hero-title{font-family:var(--serif);font-weight:300;font-size:clamp(38px,4.6vw,74px);line-height:1.02;color:var(--navy)}
+  .hero-title em{font-style:italic;color:var(--copper)}
+  .hero-sub{margin:30px 0 40px;max-width:400px;font-size:15px;line-height:1.75;color:rgba(20,27,52,.72)}
+  .hero-cta{display:inline-flex;align-items:center;gap:14px;align-self:flex-start;background:var(--navy);color:var(--cream);padding:16px 34px;border-radius:40px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;transition:transform .35s,letter-spacing .35s}
+  .hero-cta:hover{transform:translateY(-2px);letter-spacing:.26em}
+  .hero-cta svg{width:16px;height:16px}
+  .hero-right{position:relative;overflow:hidden}
+  .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+  .hero-tag{position:absolute;left:34px;bottom:34px;z-index:2}
+  .hero-tag,.hero-tag span{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.55)}
+  .hero-tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+  .hero-tag span{display:block;font-family:var(--serif);font-size:22px;letter-spacing:.02em;margin-top:8px;text-transform:none}
+
+  /* MARQUEE */
+  .marquee{background:var(--navy);color:var(--cream);padding:16px 0;overflow:hidden;white-space:nowrap}
+  .marquee-track{display:inline-flex;gap:60px;animation:scroll 28s linear infinite}
+  .marquee span{font-family:var(--serif);font-style:italic;font-size:20px;letter-spacing:.04em;opacity:.85;color:var(--cream)}
+  .marquee span::after{content:"·";margin-left:60px;color:var(--copper)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* CATALOG */
+  .catalog{padding:110px 0 90px}
+  .cat-head .eyebrow{color:var(--copper);margin-bottom:18px;display:block}
+  .cat-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,6vw,88px);line-height:1;color:var(--navy)}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin:44px 0 50px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0}
+  .filters button{background:none;border:1px solid transparent;font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,27,52,.55);padding:9px 20px;border-radius:40px;cursor:pointer;transition:all .3s}
+  .filters button:hover{color:var(--navy)}
+  .filters button.active{background:var(--navy);color:var(--cream)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 30px}
+  .card{display:flex;flex-direction:column;cursor:pointer}
+  .card-img{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--cream-dim)}
+  .card-main{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .card-main{transform:scale(1.04)}
+  .card-fav{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(247,243,233,.85);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(-6px);transition:all .35s;z-index:2;border:none;cursor:pointer}
+  .card:hover .card-fav{opacity:1;transform:translateY(0)}
+  .card-fav svg{width:16px;height:16px;stroke:var(--navy);fill:none}
+  .card-fav.on svg{fill:var(--copper);stroke:var(--copper)}
+  .card-add{position:absolute;left:0;right:0;bottom:0;background:var(--navy);color:var(--cream);text-align:center;padding:15px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;transform:translateY(100%);transition:transform .4s cubic-bezier(.2,.7,.2,1);cursor:pointer;border:none;font-family:var(--sans)}
+  .card:hover .card-add{transform:translateY(0)}
+  .thumbs{display:flex;gap:8px;margin-top:12px}
+  .thumb{width:52px;height:66px;border:1px solid var(--line);padding:0;background:none;cursor:pointer;overflow:hidden;opacity:.55;transition:opacity .3s,border-color .3s}
+  .thumb img{width:100%;height:100%;object-fit:cover}
+  .thumb.active,.thumb:hover{opacity:1;border-color:var(--navy)}
+  .card-meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px}
+  .card-meta h3{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy)}
+  .card-meta .price{font-size:14px;letter-spacing:.08em;color:var(--copper)}
+  .card-desc{font-size:13px;line-height:1.7;color:rgba(20,27,52,.65);margin-top:10px;max-width:90%}
+  .card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+  .card-cat{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(20,27,52,.45)}
+  .colors{display:flex;gap:6px}
+  .sw{width:14px;height:14px;border-radius:50%;border:1px solid var(--line)}
+
+  /* MANIFESTO */
+  .manifesto{background:var(--navy);color:var(--cream);padding:130px 0;margin-top:40px}
+  .man-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+  .man-img{aspect-ratio:4/5;overflow:hidden}
+  .man-img img{width:100%;height:100%;object-fit:cover}
+  .man-script{font-family:var(--script);font-size:clamp(40px,5vw,74px);color:var(--copper);line-height:1;margin-bottom:26px}
+  .man-text .eyebrow{color:var(--copper);margin-bottom:22px;display:block}
+  .man-text h2{font-family:var(--serif);font-weight:300;font-size:clamp(32px,3.4vw,52px);line-height:1.14;margin-bottom:28px;color:var(--cream)}
+  .man-text p{font-size:15px;line-height:1.85;color:rgba(247,243,233,.75);max-width:480px;margin-bottom:18px}
+
+  /* NEWSLETTER */
+  .news{padding:120px 0;text-align:center}
+  .news .eyebrow{color:var(--copper);margin-bottom:24px;display:block}
+  .news h2{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.4vw,66px);line-height:1.08;max-width:760px;margin:0 auto 22px;color:var(--navy)}
+  .news p{font-size:15px;color:rgba(20,27,52,.65);margin-bottom:44px}
+  .news-form{display:flex;max-width:520px;margin:0 auto;border-bottom:1px solid var(--navy);padding-bottom:4px}
+  .news-form input{flex:1;background:none;border:none;font-family:var(--sans);font-size:15px;padding:14px 6px;color:var(--navy);outline:none}
+  .news-form input::placeholder{color:rgba(20,27,52,.4)}
+  .news-form button{background:none;border:none;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;padding:0 8px;color:var(--navy);transition:color .3s}
+  .news-form button:hover{color:var(--copper)}
+  .news small{display:block;margin-top:20px;font-size:11px;letter-spacing:.06em;color:rgba(20,27,52,.45)}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:var(--cream);padding:80px 0 40px}
+  .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid var(--line-cream)}
+  .foot-brand .brand-mark{font-size:52px;margin-bottom:20px;display:inline-block;color:var(--cream)}
+  .foot-brand p{font-size:13px;line-height:1.8;color:rgba(247,243,233,.6);max-width:280px}
+  .foot-col h4{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--copper);margin-bottom:22px;font-weight:400}
+  .foot-col ul{list-style:none}
+  .foot-col li{margin-bottom:13px}
+  .foot-col a{font-size:13px;color:rgba(247,243,233,.72);transition:color .3s}
+  .foot-col a:hover{color:var(--cream)}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:30px;font-size:11px;letter-spacing:.08em;color:rgba(247,243,233,.5)}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* tablet layout: 2-column product grid, stacked brand section */
+  @media(max-width:1024px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .man-grid{grid-template-columns:1fr;gap:50px}
+    .foot-top{grid-template-columns:1fr 1fr}
+  }
+  /* phone layout: hide desktop nav links in favor of the burger icon, single-column hero/footer */
+  @media(max-width:768px){
+    header{padding:14px 0}
+    .wrap{padding:0 22px}
+    .nav-links,.nav-right .links{display:none}
+    .burger{display:flex}
+    /* regroup the header into logo-centered / actions-on-the-right now that nav-links are hidden */
+    nav.wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+    .brand-mark{grid-column:2;justify-self:center}
+    .nav-actions{display:flex;align-items:center;gap:14px;grid-column:3;justify-self:end}
+    .nav-right .bag{min-height:44px;padding:12px 18px;display:inline-flex;align-items:center}
+    .hero{grid-template-columns:1fr;padding-top:80px}
+    .hero-left::after{display:none}
+    .hero-left{padding:40px 22px 50px}
+    .hero-right{min-height:78vh;min-height:78dvh}
+    .grid{grid-template-columns:1fr 1fr;gap:34px 14px}
+    .card-meta h3{font-size:19px}
+    .card-desc{font-size:12px}
+    .thumb{width:48px;height:62px}
+    .filters button{min-height:44px}
+    .foot-top{grid-template-columns:1fr}
+    .foot-bottom{flex-direction:column;gap:12px}
+  }
+  /* small phones: single-column product grid so portrait photos get full width; payment pills form a tidy 2x2 grid instead of wrapping raggedly */
+  @media(max-width:480px){
+    .grid{grid-template-columns:1fr;gap:40px}
+    .pay-group{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none}}
+  :focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+
+
+/* ===================================================================
+   PRODUCT DETAIL PAGE (PDP) ONLY — everything below is specific to
+   producto-*.html and is not used by the main catalog page.
+   =================================================================== */
+
+/* breadcrumb trail under the header (Inicio / Catalogo / Categoria / Producto) */
+.breadcrumb-wrap{padding-top:120px}
+.breadcrumb{display:flex;gap:10px;align-items:center;font-size:12px;letter-spacing:.06em;color:rgba(20,27,52,.55);flex-wrap:wrap}
+.breadcrumb a{color:rgba(20,27,52,.55);transition:color .3s}
+.breadcrumb a:hover{color:var(--navy)}
+.breadcrumb em{font-style:normal;color:var(--navy)}
+
+/* two-column layout: photo gallery on the left, product info on the right */
+.pdp{padding:40px 0 100px}
+.pdp-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:start}
+
+/* gallery: big photo + row of clickable angle thumbnails below it */
+.pdp-img{aspect-ratio:3/4;overflow:hidden;background:var(--cream-dim)}
+.pdp-main{width:100%;height:100%;object-fit:cover}
+.pdp-thumbs{margin-top:14px}
+.pdp-thumbs .thumb{width:74px;height:92px}
+
+/* info column stays pinned while the page scrolls (desktop only) */
+.pdp-info{position:sticky;top:120px}
+.pdp-info .eyebrow{color:var(--copper);display:block;margin-bottom:14px}
+.pdp-info h1{font-family:var(--serif);font-weight:300;font-size:clamp(32px,3.6vw,48px);color:var(--navy);line-height:1.05}
+.pdp-price{font-size:20px;letter-spacing:.04em;color:var(--copper);margin-top:14px}
+.pdp-desc{font-size:14px;line-height:1.8;color:rgba(20,27,52,.68);margin-top:22px;max-width:440px}
+.pdp-label{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,27,52,.5);margin-bottom:10px}
+.pdp-colors{margin-top:28px}
+.pdp-colors .colors{gap:8px}
+.pdp-colors .sw{width:18px;height:18px}
+
+/* talla (size) picker: XS-XL pill buttons, one active at a time */
+.pdp-sizes{margin-top:24px}
+.size-group{display:flex;gap:8px;flex-wrap:wrap}
+.size-btn{width:44px;height:44px;border:1px solid var(--line);background:none;font-family:var(--sans);font-size:12px;letter-spacing:.04em;color:var(--navy);cursor:pointer;transition:all .3s}
+.size-btn:hover{border-color:var(--navy)}
+.size-btn.active{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+
+/* quantity stepper: -  1  + */
+.pdp-qty-row{margin-top:24px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line)}
+.qty-btn{width:44px;height:44px;background:none;border:none;font-size:16px;cursor:pointer;color:var(--navy)}
+.qty-val{width:36px;text-align:center;font-size:14px}
+
+/* main call-to-action button */
+.add-bag-btn{width:100%;max-width:440px;margin-top:32px;background:var(--navy);color:var(--cream);border:none;padding:17px 0;border-radius:40px;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:transform .35s,letter-spacing .35s}
+.add-bag-btn:hover{transform:translateY(-2px);letter-spacing:.26em}
+.pdp-note{font-size:12px;color:rgba(20,27,52,.5);margin-top:16px;max-width:440px;line-height:1.6}
+.back-link{display:inline-block;margin-top:28px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(20,27,52,.6);border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .3s,border-color .3s}
+.back-link:hover{color:var(--navy);border-color:var(--navy)}
+
+/* "Completa el look" related-products strip at the bottom */
+.related{padding:20px 0 100px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:44px}
+.mini-card{display:block}
+.mini-card .mini-img{aspect-ratio:3/4;overflow:hidden;background:var(--cream-dim)}
+.mini-card .mini-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.mini-card:hover .mini-img img{transform:scale(1.04)}
+.mini-card h3{font-family:var(--serif);font-weight:400;font-size:19px;color:var(--navy);margin-top:14px}
+.mini-card .price{font-size:13px;color:var(--copper);margin-top:4px;display:block}
+
+/* responsive: stack gallery/info on tablet, single column related grid on phone */
+@media(max-width:1024px){
+  .pdp-grid{grid-template-columns:1fr;gap:40px}
+  .pdp-info{position:static}
+  .related-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .related-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER: same nav bar as the catalog page, links point back to it ============ -->
+<header id="header">
+  <nav class="wrap">
+    <ul class="nav-links">
+      <li><a href="PAGINA_WEB.html#catalogo">Catálogo</a></li>
+      <li><a href="PAGINA_WEB.html#coleccion">Nueva colección</a></li>
+      <li><a href="PAGINA_WEB.html#marca">La marca</a></li>
+    </ul>
+    <a href="PAGINA_WEB.html" class="brand-mark">Drittei</a>
+    <div class="nav-actions">
+      <div class="nav-right">
+        <span class="links">Buscar</span>
+        <a href="checkout.html" class="bag">Bolsa (0)</a>
+      </div>
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ MOBILE MENU: slide-in panel opened by the burger button (see script at bottom) ============ -->
+<div class="nav-overlay" id="navOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Cerrar menú">&times;</button>
+  <ul class="mobile-menu-links">
+    <li><a href="PAGINA_WEB.html#catalogo">Catálogo</a></li>
+    <li><a href="PAGINA_WEB.html#coleccion">Nueva colección</a></li>
+    <li><a href="PAGINA_WEB.html#marca">La marca</a></li>
+  </ul>
+  <a href="checkout.html" class="bag mobile-menu-bag">Bolsa (0)</a>
+</nav>
+
+<!-- ============ BREADCRUMB: Inicio > Catalogo > Categoria > Nombre del producto ============ -->
+<section class="wrap breadcrumb-wrap">
+  <nav class="breadcrumb"><a href="PAGINA_WEB.html">Inicio</a><span>/</span><a href="PAGINA_WEB.html#catalogo">Catálogo</a><span>/</span><a href="PAGINA_WEB.html#catalogo">Vestidos</a><span>/</span><em>Maxi dress</em></nav>
+</section>
+
+<!-- ============ PRODUCT DETAIL: gallery (left) + info/purchase panel (right) ============ -->
+<section class="pdp wrap">
+  <div class="pdp-grid">
+
+    <!-- photo gallery: big image + 3 clickable angle thumbnails -->
+    <div class="pdp-gallery">
+      <div class="pdp-img">
+        <img class="pdp-main" id="pdpMain" src="images/cala-1.jpg" alt="Maxi dress">
+      </div>
+      <div class="thumbs pdp-thumbs" id="pdpThumbs">
+<button class="thumb active" data-img="images/cala-1.jpg" aria-label="Ver angulo 1"><img src="images/cala-1.jpg" alt="" loading="lazy"></button><button class="thumb" data-img="images/cala-2.jpg" aria-label="Ver angulo 2"><img src="images/cala-2.jpg" alt="" loading="lazy"></button><button class="thumb" data-img="images/cala-3.jpg" aria-label="Ver angulo 3"><img src="images/cala-3.jpg" alt="" loading="lazy"></button>
+      </div>
+    </div>
+
+    <!-- info panel: title, price, description, color/size/qty pickers, add-to-bag -->
+    <div class="pdp-info">
+      <span class="eyebrow">Vestidos</span>
+      <h1>Maxi dress</h1>
+      <div class="pdp-price">$40.000</div>
+      <p class="pdp-desc">Vestido midi en algodón blanco con tiras negras cruzadas y espalda descubierta. Vuelo amplio y aire mediterráneo.</p>
+      <div class="pdp-colors">
+        <span class="pdp-label">Color</span>
+        <span class="colors"><span class="sw" style="background:#F4F1EA"></span><span class="sw" style="background:#141B34"></span></span>
+      </div>
+      <div class="pdp-sizes">
+        <span class="pdp-label">Talla</span>
+        <div class="size-group" id="sizeGroup">
+          <button class="size-btn" data-size="XS">XS</button>
+          <button class="size-btn" data-size="S">S</button>
+          <button class="size-btn active" data-size="M">M</button>
+          <button class="size-btn" data-size="L">L</button>
+          <button class="size-btn" data-size="XL">XL</button>
+        </div>
+      </div>
+      <div class="pdp-qty-row">
+        <span class="pdp-label">Cantidad</span>
+        <div class="qty" id="qty">
+          <button type="button" class="qty-btn" data-d="-1" aria-label="Restar">−</button>
+          <span class="qty-val" id="qtyVal">1</span>
+          <button type="button" class="qty-btn" data-d="1" aria-label="Sumar">+</button>
+        </div>
+      </div>
+      <button class="add-bag-btn" id="addBagBtn">Añadir a la bolsa</button>
+      <p class="pdp-note">Envío gratis desde $150 · Cambios y devoluciones dentro de 30 días.</p>
+      <a href="PAGINA_WEB.html#catalogo" class="back-link">← Volver al catálogo</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ RELATED PRODUCTS: the other 3 items, each linking to its own page ============ -->
+<section class="related wrap">
+  <div class="cat-head">
+    <span class="eyebrow">También te puede gustar</span>
+    <h2>Completa el look</h2>
+  </div>
+  <div class="related-grid">
+<a class="mini-card" href="producto-vestido-aura.html"><div class="mini-img"><img src="images/aura-1.jpg" alt="Vestido halter tejido de punto" loading="lazy"></div><h3>Vestido halter tejido de punto</h3><span class="price">$30.00</span></a><a class="mini-card" href="producto-conjunto-marea.html"><div class="mini-img"><img src="images/marea-1.jpg" alt="Top y falda" loading="lazy"></div><h3>Top y falda</h3><span class="price">$40.000</span></a><a class="mini-card" href="producto-look-terra.html"><div class="mini-img"><img src="images/terra-1.jpg" alt="Blusa" loading="lazy"></div><h3>Blusa</h3><span class="price">$25.000</span></a>
+  </div>
+</section>
+
+<!-- ============ FOOTER: same as the catalog page, links point back to it ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand-mark">Drittei</div>
+        <p>Moda de autor para la mujer contemporánea. Diseñado con intención, hecho para permanecer.</p>
+      </div>
+      <div class="foot-col"><h4>Tienda</h4><ul>
+        <li><a href="PAGINA_WEB.html#catalogo">Nueva colección</a></li><li><a href="PAGINA_WEB.html#catalogo">Vestidos</a></li>
+        <li><a href="PAGINA_WEB.html#catalogo">Conjuntos</a></li><li><a href="PAGINA_WEB.html#catalogo">Accesorios</a></li></ul></div>
+      <div class="foot-col"><h4>Ayuda</h4><ul>
+        <li><a href="#">Envíos y pagos</a></li><li><a href="#">Cambios y devoluciones</a></li>
+        <li><a href="#">Guía de tallas</a></li><li><a href="#">Contacto</a></li></ul></div>
+      <div class="foot-col"><h4>Síguenos</h4><ul>
+        <li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li>
+        <li><a href="#">TikTok</a></li><li><a href="#">WhatsApp</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 DRITTEI. Todos los derechos reservados.</span>
+      <span>Política de privacidad · Términos</span>
+    </div>
+  </div>
+</footer>
+
+<script src="transitions.js"></script>
+<script src="cart.js"></script>
+<script>
+  // shrink/tint the header bar once the page is scrolled, same behaviour as the catalog page
+  const header=document.getElementById('header');
+  addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>40));
+
+  // MOBILE MENU: burger opens a slide-in panel with the nav links + cart; closes via scrim, ×, Escape, or a link click
+  const burgerBtn=document.getElementById('burgerBtn');
+  const mobileMenu=document.getElementById('mobileMenu');
+  const navOverlay=document.getElementById('navOverlay');
+  function openMenu(){
+    mobileMenu.classList.add('open');
+    navOverlay.classList.add('open');
+    document.body.classList.add('menu-open');
+    burgerBtn.setAttribute('aria-expanded','true');
+    mobileMenu.setAttribute('aria-hidden','false');
+    mobileMenu.querySelector('a')?.focus();
+  }
+  function closeMenu(){
+    mobileMenu.classList.remove('open');
+    navOverlay.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    burgerBtn.setAttribute('aria-expanded','false');
+    mobileMenu.setAttribute('aria-hidden','true');
+    burgerBtn.focus();
+  }
+  burgerBtn.addEventListener('click',openMenu);
+  document.getElementById('mobileMenuClose').addEventListener('click',closeMenu);
+  navOverlay.addEventListener('click',closeMenu);
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&mobileMenu.classList.contains('open'))closeMenu();});
+
+  // gallery: clicking a thumbnail swaps the big photo and marks that thumb as active
+  const pdpMain=document.getElementById('pdpMain');
+  document.querySelectorAll('#pdpThumbs .thumb').forEach(t=>{
+    t.addEventListener('click',()=>{
+      pdpMain.src=t.dataset.img;
+      document.querySelector('#pdpThumbs .thumb.active')?.classList.remove('active');
+      t.classList.add('active');
+    });
+  });
+
+  // size picker: only one size button can be active at a time
+  document.querySelectorAll('.size-btn').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelector('.size-btn.active')?.classList.remove('active');
+      b.classList.add('active');
+    });
+  });
+
+  // quantity stepper: +/- buttons adjust qty, never below 1
+  let qty=1;
+  const qtyVal=document.getElementById('qtyVal');
+  document.querySelectorAll('.qty-btn').forEach(b=>{
+    b.addEventListener('click',()=>{
+      const d=parseInt(b.dataset.d,10);
+      qty=Math.max(1,qty+d);
+      qtyVal.textContent=qty;
+    });
+  });
+
+  // add-to-bag button: purely visual confirmation (no real cart/backend wired up)
+  document.getElementById('addBagBtn').addEventListener('click',()=>{
+    const PRODUCT_ID = location.pathname.split('/').pop();
+    cartAdd({
+      id: PRODUCT_ID,
+      href: PRODUCT_ID,
+      title: document.querySelector('.pdp-info h1').textContent,
+      price: document.querySelector('.pdp-price').textContent,
+      image: pdpMain.getAttribute('src'),
+      size: document.querySelector('.size-btn.active')?.dataset.size || null,
+      qty: qty
+    });
+    const btn=document.getElementById('addBagBtn');
+    const original=btn.textContent;
+    btn.textContent='Añadido ✓';
+    setTimeout(()=>{btn.textContent=original;},1400);
+  });
+</script>
+</body>
+</html>
